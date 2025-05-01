@@ -11,9 +11,9 @@ public class UsageLog4j {
         byte one = 1;
         short two = 2;
         int three = 3;
-        long four = 4;
-        double five = 5.0;
-        float six = 6.0f;
+        long four = 4L;
+        double five = 5.0D;
+        float six = 6.0F;
         char seven = '7';
         boolean eight = true;
         LOG.debug("User info name : {}, age : {}", name, age);
