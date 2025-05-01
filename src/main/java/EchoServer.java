@@ -1,10 +1,14 @@
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 public class EchoServer {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        final Logger LOG = LoggerFactory.getLogger(EchoServer.class);
 
         try (ServerSocket server = new ServerSocket(9000)) {
 
@@ -36,6 +40,8 @@ public class EchoServer {
                     output.flush();
                 }
             }
+        } catch (IOException e) {
+            LOG.error("Не удалось запустить сервер: ", e);
         }
     }
 }
