@@ -1,36 +1,54 @@
 package Theme_6;
 
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.Nullable;
+import java.util.Objects;
 
 public class Pair<I, S> {
-    private I getFirst;
-    private S getSecond;
+    private final I first;
+    private final S second;
 
-    public void setGetFirst(I getFirst) {this.getFirst = getFirst;}
-    public I getFirst(){return getFirst;}
+    private Pair(I first, S second) {
+        this.first = first;
+        this.second = second;
+    }
 
+    public static <I, S> Pair<I, S> of(I first, S second) {
+        return new Pair<>(first, second);
+    }
 
-    public void setGetSecond(S getSecond){this.getSecond = getSecond;}
-    public S getSecond(){return getSecond;}
+    public I getFirst() {
+        return first;
+    }
 
-    Pair<Integer, String> pair = Pair.of(1, "hello");
+    public S getSecond() {
+        return second;
+    }
 
-    @Contract(pure = true)
-    private static @Nullable Pair<Integer, String> of(int i, String hello) {return null;}
+    public boolean equals(Object o) {
+        if (this == o) return true; // Это значит, что o == o
+        if (null == o) return false;
+        Pair<?, ?> other = (Pair<?, ?>) o; // ClassCastException при использовании <I, S>
+        return Objects.equals(this.first, other.first) && Objects.equals(this.second, other.second);
+    }
 
-    @Contract(pure = true)
-    private static @Nullable Pair<Integer,String> of (boolean mustBeTrue, boolean mustAlsoBeTrue){return null;}
+    @Override
+    public int hashCode() {
+        return Objects.hash(first,second);
+    }
 
-    Integer i = pair.getFirst(); // 1
-    String s = pair.getSecond(); // "hello"
-
-    Pair<Integer, String> pair2 = Pair.of(1, "hello");
-    boolean mustBeTrue = pair.equals(pair2); // true!
-    boolean mustAlsoBeTrue = pair.hashCode() == pair2.hashCode(); //true
 
     public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder();
 
+        Pair<Integer, String> pair = Pair.of(1, "hello");
+        Integer i = pair.getFirst(); // 1
+        String s = pair.getSecond(); // "hello"
+
+        Pair<Integer, String> pair2 = Pair.of(1, "hello");
+        boolean mustBeTrue = pair.equals(pair2); // true!
+        boolean mustAlsoBeTrue = pair.hashCode() == pair2.hashCode(); // true!
+
+        sb.append(i).append(" " + s).append(" " + mustBeTrue).append(" " + mustAlsoBeTrue);
+        System.out.println(sb);
 
     }
 
