@@ -31,7 +31,7 @@ public class Easy {
 
 /*
                 if (sdfasdf % 2 == 0) {
-
+в
                     List<Integer> dsff = new ArrayList<>(sdfasdf);
 
 
