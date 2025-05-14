@@ -1,4 +1,4 @@
-package ru.job4j.lambada;
+package ru.job4j.lambda;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -23,9 +23,11 @@ public class FI {
 
     @Override
     public String toString() {
-        return "name = " + name + '\''
-                + "surname = " + surname
-                + "}";
+        return "{" +
+                "name = '" + name
+                + "', surname = '" + surname
+                + "'}";
+
     }
 
     static Comparator<FI> comparatorDescSize =
