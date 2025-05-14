@@ -35,7 +35,7 @@ public class FI {
 
 
     public static void main(String[] args) {
-        List<FI> people = new ArrayList<>();
+        List<FI> people = new ArrayList<FI>();
 
         people.add(new FI("Petr", "Golovin"));
         people.add(new FI("David", "Vardanyan"));
